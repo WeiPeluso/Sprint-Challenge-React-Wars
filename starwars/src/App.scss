@@ -1,0 +1,52 @@
+.App {
+  text-align: center;
+  width:100%;
+}
+
+h1{
+color:#FCA2A4;
+font-size:3rem;
+}
+
+.searchArea{
+ 
+
+  p{
+    color:#F0A1E7;
+    font-size: 1rem;
+    
+  }
+
+  input{
+    width:30%;
+    height:1rem;
+  }
+
+}
+
+.pageArea{
+
+  border:2px solid red;
+  width: 10%;
+  display:flex;
+  align-items: center;
+  align-content: center;
+  justify-content: space-between;
+  margin-left:45%;
+
+}
+
+.displayCharacter{
+  
+  border:2px solid red;
+  widows: 100%;
+  margin-left: 1%;
+  margin-right: 1%;
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  
+
+}
+
+/* write your parent styles in here for your App.js */
