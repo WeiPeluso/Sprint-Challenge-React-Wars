@@ -15,15 +15,15 @@ const App = () => {
   const [searchName,setSearchName]=useState([])
   const [page,setPage]=useState(1)
   const [information,setInformation]=useState([])
+  const [episoda,setEpisoda]=useState(1)
+  const [espisodaCharactorArray, setEpisodaCharactorArray]=useState([]);
 
   //useEffect(()=>{console.log(characters)})
 
   useEffect(()=>{
-
-    axios.get(`https://rickandmortyapi.com/api/character/?name=${searchName}&page=${page}&name=${searchName}`)
-
+    axios.get(`https://rickandmortyapi.com/api/character/?name=${searchName}&page=${page}`)
+    
     .then((response)=>{
-
       setCharacters(response.data.results)
       setInformation(response.data.info)
   
@@ -33,6 +33,26 @@ const App = () => {
       console.log(error)
     })
   },[searchName,page])
+
+
+  useEffect(()=>{
+    axios.get(`https://rickandmortyapi.com/api/episode/${episoda}`)
+    .then((response)=>{
+      setEpisodaCharactorArray(response.data.characters)
+     // console.log(espisodaCharactorArray)
+      espisodaCharactorArray.forEach((character)=>{
+       axios.get(character)
+       .then((response)=>{
+         characters.push(response.data)
+       } )
+      })
+      console.log(characters)
+    
+      })
+  },[episoda])
+
+  
+
 
 
   const prevHandler=(event)=>{
@@ -62,11 +82,39 @@ const App = () => {
       </div>
  
       <div className='searchArea'>
+
+        <div className='searchByName'>
             <p>Search By Name</p>
             <input type='text' onChange={(event)=>{
           setSearchName(event.target.value)
         }} 
         value={searchName}></input>
+        </div>
+
+        <div className='groupByEpisoda'>
+           <p>Group By Episoda</p>
+           <select id="episodas" onChange={(event)=>{
+          setEpisoda(event.target.value)
+          setCharacters([])
+         
+        }}>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        
+        </select>
+  
+          
+
+
+          </div>
 
         </div>
 
@@ -83,6 +131,7 @@ const App = () => {
             ))
       }
      </div>
+
     </div>
   );
 }
