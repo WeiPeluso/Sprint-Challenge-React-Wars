@@ -1,0 +1,35 @@
+
+.characterArea{
+
+   width:40%;
+   border: 2px solid #D4EFFB;
+   border-radius:8%;
+   margin-left: 2%;
+   margin-right: 2%;
+   margin-top: 2%;
+    background-color: #D4EFFB;
+
+
+   display:flex;
+   justify-content: space-between;
+  
+   img{
+    border-radius:8%;
+
+   }
+   .textArea{
+
+       width:45%;
+       margin-top: 5%;
+     align-items: center;
+     border-radius:8%;
+    //border: 2px solid red;
+     background-color: #D4EFFB;
+     text-align: left;
+
+
+   }
+
+
+
+}
